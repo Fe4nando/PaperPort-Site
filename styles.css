@@ -1,0 +1,209 @@
+/* PaperPort site — shared editorial style.
+   Identity carried forward from the Fraunces/Inter design: warm paper ground,
+   italic display serif, ink-black actions, hairline-ruled sections. This pass
+   tightens type scale, spacing rhythm and browser surfaces, drops the eyebrow
+   labels, and makes the section numbers and the product figure carry weight. */
+
+:root{
+  --primary:#4a3fd6; --primary-dark:#372fa8;
+  --ink:#171826; --body:#3b3c4d; --muted:#63647a;
+  --bg:#fbfaf8; --surface:#ffffff;
+  --line:#e4e2db; --line-soft:#eeece7;
+  --paper:#fff9ec; --paper-line:#e9dfc2;
+  --shadow-fig:0 1px 2px rgba(23,24,38,.05), 0 4px 10px -6px rgba(23,24,38,.12);
+  --fs-meta:.78rem;
+  --measure:38rem;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms !important; animation-duration:.01ms !important}
+}
+body{
+  margin:0; background:var(--bg); color:var(--body);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+h1,h2,.serif{font-family:'Fraunces','Iowan Old Style',Georgia,serif; color:var(--ink)}
+h1,h2{font-weight:600; letter-spacing:-.02em; line-height:1.1; text-wrap:balance}
+h3{font-weight:600; letter-spacing:-.005em; color:var(--ink)}
+p{margin:0}
+img{max-width:100%; display:block}
+
+a{color:var(--primary); text-underline-offset:2px; text-decoration-thickness:.06em}
+a:hover{color:var(--primary-dark)}
+::selection{background:#e7e2ff; color:var(--ink)}
+:focus-visible{outline:2px solid var(--primary); outline-offset:3px; border-radius:3px}
+::-webkit-scrollbar{width:12px; height:12px}
+::-webkit-scrollbar-thumb{background:var(--line); border-radius:99px; border:3px solid var(--bg); background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:#d3d0c6; background-clip:content-box}
+
+.wrap{max-width:1060px; margin:0 auto; padding:0 30px}
+
+/* ---------------- Header ---------------- */
+.site-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:24px 0; border-bottom:1px solid var(--line-soft);
+}
+.brand{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink)}
+.brand img{width:29px; height:29px; border-radius:7px}
+.brand strong{font-size:1.02rem; letter-spacing:-.01em; font-weight:650}
+.nav{display:flex; align-items:center; gap:30px; font-size:var(--fs-meta)}
+.nav a{color:var(--muted); text-decoration:none}
+.nav a:hover{color:var(--ink)}
+.nav .nav-dl{
+  color:var(--ink); border:1px solid var(--line); border-radius:9px;
+  padding:8px 15px; font-weight:600; transition:border-color .15s ease, color .15s ease;
+}
+.nav .nav-dl:hover{border-color:var(--ink)}
+@media (max-width:600px){ .nav a.plain{display:none} .nav{gap:0} }
+
+/* ---------------- Buttons ---------------- */
+.btn{
+  display:inline-flex; align-items:center; gap:10px; padding:14px 24px; border-radius:11px;
+  font-weight:600; font-size:1rem; line-height:1; text-decoration:none;
+  border:1px solid transparent; transition:background .15s ease, transform .15s ease;
+}
+.btn svg{flex:none}
+.btn-primary{background:var(--ink); color:#fff}
+.btn-primary:hover{background:#000; color:#fff; transform:translateY(-1px)}
+
+/* ---------------- Hero ---------------- */
+.hero{
+  display:grid; grid-template-columns:1.02fr .98fr; gap:60px; align-items:center;
+  padding:70px 0 86px;
+}
+.hero h1{font-size:clamp(2.5rem, 5.2vw, 3.5rem); margin:0 0 22px}
+.hero h1 em{font-style:italic; color:var(--primary)}
+.hero-lede{font-size:1.125rem; line-height:1.55; color:var(--body); max-width:27rem; margin:0 0 32px}
+.hero-actions{display:flex; align-items:center; gap:20px; flex-wrap:wrap}
+.hero-jump{color:var(--muted); font-size:var(--fs-meta); text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px}
+.hero-jump:hover{color:var(--ink); border-color:var(--ink)}
+.hero-fine{color:var(--muted); font-size:var(--fs-meta); margin:24px 0 0}
+.hero-fine .sep{margin:0 8px; color:var(--paper-line)}
+
+/* ---------------- Product figure (an editorial plate, not a screenshot) ---- */
+.figure{
+  margin:0; background:var(--paper); border:1px solid var(--paper-line); border-radius:14px;
+  box-shadow:var(--shadow-fig); padding:15px;
+}
+.fig-app{
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:9px; display:grid; grid-template-columns:120px 1fr; overflow:hidden;
+  font-size:var(--fs-meta);
+}
+.fig-rail{background:#faf9f6; border-right:1px solid var(--line-soft); padding:15px 11px}
+.fig-rail b{display:block; font-size:var(--fs-meta); color:var(--ink); margin-bottom:13px; font-weight:650}
+.fig-rail span{display:block; padding:7px 9px; border-radius:6px; color:var(--muted); margin-bottom:3px; font-size:var(--fs-meta); white-space:nowrap}
+.fig-rail span.on{background:#efecff; color:var(--primary); font-weight:600}
+.fig-main{padding:17px 18px}
+.fig-steps{display:flex; align-items:center; gap:6px; margin-bottom:17px}
+.fig-steps i{
+  width:20px; height:20px; border-radius:50%; display:grid; place-items:center;
+  font-style:normal; font-weight:700; font-size:var(--fs-meta); background:#efecff; color:var(--primary);
+}
+.fig-steps i.done{background:var(--primary); color:#fff}
+.fig-steps i.now{box-shadow:0 0 0 3px #e7e2ff}
+.fig-steps u{flex:1; height:1px; background:var(--line); text-decoration:none}
+.fig-label{font-size:var(--fs-meta); font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:5px}
+.fig-sel{color:var(--ink); font-weight:600; font-size:1rem; margin-bottom:3px}
+.fig-sub{color:var(--muted); font-size:var(--fs-meta); margin-bottom:16px}
+.fig-arrow{
+  display:flex; align-items:center; gap:9px; color:var(--muted); font-size:var(--fs-meta);
+  letter-spacing:.05em; text-transform:uppercase; margin:0 0 11px;
+}
+.fig-arrow::before,.fig-arrow::after{content:""; height:1px; background:var(--line); flex:1}
+.fig-file{
+  display:flex; align-items:center; gap:10px; padding:11px 12px; border:1px solid var(--line);
+  border-radius:8px; margin-bottom:8px; background:#fff;
+}
+.fig-file svg{flex:none; color:var(--primary)}
+.fig-file span{display:block; color:var(--muted); font-size:var(--fs-meta); line-height:1.45}
+.fig-file b{display:block; font-size:.9375rem; color:var(--ink); font-weight:600; margin-bottom:1px}
+
+/* ---------------- Sections ---------------- */
+.section{padding:8px 0 88px}
+.section-head{max-width:34rem; margin:0 0 34px}
+.section-head h2{font-size:clamp(1.9rem, 3.2vw, 2.25rem); margin:0 0 13px}
+.section-head p{color:var(--body); font-size:1.125rem; line-height:1.55; margin:0}
+
+/* How it works — numbered because the order is the instruction */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line)}
+/* First cell flush-left with the headline; rules sit between cells. The 0 here
+   is deliberate section-edge alignment, not cramped text. */
+.step{padding:30px 34px 34px 0}
+.step:not(:last-child){border-right:1px solid var(--line)}
+.step:last-child{padding-right:0}
+.step-n{
+  font-family:'Fraunces',Georgia,serif; font-style:italic; font-weight:600;
+  font-size:1.2rem; color:var(--primary); line-height:1;
+}
+.step-n::after{content:""; display:block; width:28px; height:2px; background:var(--ink); margin:14px 0 18px}
+.step h3{margin:0 0 9px; font-size:1.125rem}
+.step p{margin:0; color:var(--body); font-size:1rem; line-height:1.55}
+
+/* Feature list — plain hairline rows, no icons, no cards */
+.list{border-top:1px solid var(--line)}
+.row{
+  display:grid; grid-template-columns:15rem 1fr; gap:40px; padding:30px 0;
+  border-bottom:1px solid var(--line);
+}
+.row h3{margin:0; font-size:1.125rem}
+.row p{margin:0; color:var(--body); font-size:1rem; line-height:1.55; max-width:var(--measure)}
+
+/* ---------------- Closing band ---------------- */
+.close{
+  background:var(--ink); border-radius:18px; padding:52px 48px; margin:4px 0 0;
+  display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;
+}
+.close h2{color:#fff; font-size:1.75rem; margin:0 0 8px}
+.close p{color:#a9aabd; margin:0; font-size:var(--fs-meta)}
+.close .btn-primary{background:#fff; color:var(--ink)}
+.close .btn-primary:hover{background:#f0f0f4; color:var(--ink)}
+
+/* ---------------- Footer ---------------- */
+.site-foot{border-top:1px solid var(--line-soft); margin-top:64px; padding:30px 0 56px; color:var(--muted); font-size:var(--fs-meta)}
+.site-foot .wrap{display:flex; flex-wrap:wrap; gap:14px 26px; align-items:baseline; justify-content:space-between}
+.site-foot nav{display:flex; flex-wrap:wrap; gap:8px 20px}
+.site-foot a{color:var(--muted); text-decoration:none}
+.site-foot a:hover{color:var(--ink)}
+.rights{flex-basis:100%; color:var(--muted); font-size:var(--fs-meta); line-height:1.6; max-width:44rem; opacity:.9}
+
+/* ---------------- Legal pages ---------------- */
+.legal{max-width:41rem; margin:0 auto; padding:52px 30px 96px}
+.legal .back{display:inline-flex; align-items:center; gap:6px; font-size:var(--fs-meta); color:var(--muted); text-decoration:none; margin-bottom:30px}
+.legal .back:hover{color:var(--ink)}
+.legal .brand{margin-bottom:10px}
+.legal h1{font-size:clamp(2rem, 4vw, 2.4rem); margin:16px 0 6px}
+.legal .updated{color:var(--muted); font-size:var(--fs-meta); margin:0}
+.legal .lead{
+  font-size:1rem; line-height:1.62; color:var(--body); border-top:1px solid var(--line);
+  padding-top:28px; margin:30px 0 0;
+}
+.legal h2{font-size:1.25rem; font-weight:600; letter-spacing:-.01em; margin:40px 0 0}
+.legal h2 + p, .legal h2 + ul{margin-top:12px}
+.legal p{margin:15px 0 0; font-size:1rem; line-height:1.62; max-width:var(--measure)}
+.legal ul{margin:12px 0 0; padding-left:20px; display:flex; flex-direction:column; gap:8px}
+.legal li{color:var(--body); font-size:1rem; line-height:1.55; max-width:var(--measure)}
+.legal .contact{color:var(--muted); font-size:var(--fs-meta); margin-top:42px; padding-top:24px; border-top:1px solid var(--line)}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr; gap:44px; padding:52px 0 64px}
+  .hero-lede{max-width:none}
+  .steps{grid-template-columns:1fr}
+  .step{padding:26px 0 28px}
+  .step:not(:last-child){border-right:none; border-bottom:1px solid var(--line)}
+  .row{grid-template-columns:1fr; gap:8px}
+  .section{padding:8px 0 64px}
+  .close{padding:38px 28px}
+}
+@media (max-width:560px){
+  .wrap{padding:0 22px}
+  .fig-app{grid-template-columns:1fr}
+  .fig-rail{display:flex; gap:6px; border-right:0; border-bottom:1px solid var(--line-soft)}
+  .fig-rail b{display:none}
+  .fig-rail span{margin:0}
+}
