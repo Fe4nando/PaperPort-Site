@@ -4,92 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Privacy Policy — PaperPort</title>
+<meta name="description" content="How PaperPort handles your data: it runs entirely on your own computer, with no server, no database, and no tracking.">
 <link rel="icon" href="icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --primary:#4a3fd6; --ink:#171826; --muted:#66677e; --bg:#fbfaf8;
-    --line:#e5e3dd;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    line-height:1.65; -webkit-font-smoothing:antialiased;
-  }
-  h1,.serif{font-family:'Fraunces',Georgia,serif}
-  a{color:var(--primary)}
-  .wrap{max-width:680px; margin:0 auto; padding:52px 28px 90px}
-  .back{display:inline-flex; align-items:center; gap:6px; font-size:.85rem; color:var(--muted); text-decoration:none; margin-bottom:28px}
-  .back:hover{color:var(--ink)}
-  .brand{display:flex; align-items:center; gap:10px; margin-bottom:6px}
-  .brand img{width:30px; height:30px; border-radius:8px}
-  .brand strong{font-size:1.02rem}
-  .updated{color:var(--muted); font-size:.85rem; margin:0 0 36px}
-  h1{font-size:2.1rem; font-weight:600; letter-spacing:-.01em; margin:14px 0 6px}
-  h2{font-size:1.05rem; font-weight:700; margin:36px 0 10px; letter-spacing:-.005em}
-  p, li{color:#3b3c4d; font-size:.98rem}
-  ul{padding-left:20px}
-  .lead{font-size:1.05rem; color:var(--muted); border-top:1px solid var(--line); padding-top:24px; margin-top:8px}
-  .contact{color:var(--muted); font-size:.9rem; margin-top:40px; padding-top:24px; border-top:1px solid var(--line)}
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
-<div class="wrap">
-  <a class="back" href="index.html">← PaperPort</a>
-  <div class="brand"><img src="icon.png" alt=""><strong>PaperPort</strong></div>
-  <h1>Privacy Policy</h1>
-  <p class="updated">Last updated 27 August 2026</p>
+<body class="page-legal">
+<!--
+  DIRECTION CONTRACT — PaperPort Privacy Policy (PaperPort-Site privacy.html), Read
+  THESIS: A legal page that reads as part of the product, not a bolted-on
+    document. It refuses the flat generic-sans legal template the incumbent used.
+  OWN-WORLD: The shipped app's system — committed purple #5b4fe9, Segoe UI
+    Variable, dual radial-gradient ground, one soft-shadowed surface card, 18px
+    radii, purple section headings, full dark mode. Shared with site.css.
+  STORY: The reader wants to know what leaves their computer. They find the
+    answer — almost nothing — laid out in scannable sections with clear headings.
+  FIRST VIEWPORT: Back link, brand lockup, "Privacy Policy" H1, last-updated line,
+    then the policy opening inside a single reading card at a 68ch measure.
+  FORM: Single-column legal reading page. Inherits the established app world; no
+    concept-seed. Legal copy is verbatim from the prior version.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+-->
+<main>
+  <a class="back-link" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to PaperPort
+  </a>
 
-  <p class="lead">PaperPort is a desktop application that runs entirely on your own computer. It has no
-  server of its own, no user database, and does not track or analyse how you use it. This
-  page explains the only two places any of your data touches something outside your
-  computer: signing in with Google, and downloading past papers from third-party mirrors.</p>
+  <div class="legal-head">
+    <a class="brand" href="index.html">
+      <img src="icon.png" alt="">
+      <span class="brand-text"><strong>PaperPort</strong><span>Past Papers Library</span></span>
+    </a>
+    <h1>Privacy Policy</h1>
+    <p class="legal-updated">Last updated: 27 August 2026</p>
+  </div>
 
-  <h2>Signing in with Google</h2>
-  <p>If PaperPort offers a "Sign in with Google" option, it uses Google's standard sign-in
-  (OAuth 2.0) and requests only three pieces of information:</p>
-  <ul>
-    <li>Your name</li>
-    <li>Your email address</li>
-    <li>Your profile photo</li>
-  </ul>
-  <p>This is used for exactly one thing: showing your real name and photo in the app's
-  sidebar instead of your Windows username. PaperPort does not request access to your
-  Gmail, Drive, contacts, calendar, or anything else on your Google account, and never asks
-  for a password — Google's own sign-in page handles that, outside of PaperPort entirely.</p>
-  <p>Your sign-in session (an access token and a refresh token, so you don't have to sign in
-  every time) is saved in a small settings file on your own computer and is never sent
-  anywhere except back to Google to keep that session valid. Signing out, or uninstalling
-  PaperPort, removes it.</p>
+  <article class="legal-card">
+    <p>PaperPort is a desktop application that runs entirely on your own computer. It has no
+    server of its own, no user database, and does not track or analyse how you use it. This
+    page explains the only two places any of your data touches something outside your
+    computer: signing in with Google, and downloading past papers from third-party mirrors.</p>
 
-  <h2>Downloading past papers</h2>
-  <p>When you download a paper, PaperPort connects your computer directly to one of a few
-  third-party mirror websites to fetch that file. Those requests happen the same way any
-  file download in a browser would — the mirror site sees a request from your device, the
-  same as it would from anyone visiting it directly. PaperPort itself does not log, store,
-  or transmit a record of what you've downloaded anywhere outside your own computer.</p>
+    <h2>Signing in with Google</h2>
+    <p>If PaperPort offers a "Sign in with Google" option, it uses Google's standard sign-in
+    (OAuth 2.0) and requests only three pieces of information:</p>
+    <ul>
+      <li>Your name</li>
+      <li>Your email address</li>
+      <li>Your profile photo</li>
+    </ul>
+    <p>This is used for exactly one thing: showing your real name and photo in the app's
+    sidebar instead of your Windows username. PaperPort does not request access to your
+    Gmail, Drive, contacts, calendar, or anything else on your Google account, and never asks
+    for a password — Google's own sign-in page handles that, outside of PaperPort entirely.</p>
+    <p>Your sign-in session (an access token and a refresh token, so you don't have to sign in
+    every time) is saved in a small settings file on your own computer and is never sent
+    anywhere except back to Google to keep that session valid. Signing out, or uninstalling
+    PaperPort, removes it.</p>
 
-  <h2>What PaperPort does not do</h2>
-  <ul>
-    <li>No analytics, advertising IDs, or usage tracking of any kind</li>
-    <li>No account or database on any server — everything lives on your computer</li>
-    <li>No selling or sharing of any data, because none is collected to share</li>
-  </ul>
+    <h2>Downloading past papers</h2>
+    <p>When you download a paper, PaperPort connects your computer directly to one of a few
+    third-party mirror websites to fetch that file. Those requests happen the same way any
+    file download in a browser would — the mirror site sees a request from your device, the
+    same as it would from anyone visiting it directly. PaperPort itself does not log, store,
+    or transmit a record of what you've downloaded anywhere outside your own computer.</p>
 
-  <h2>Where your data lives</h2>
-  <p>Entirely on your own computer: your downloaded papers in the folder you choose (see
-  Settings), and your Google session in PaperPort's local settings folder. Nothing is
-  uploaded by PaperPort at any point.</p>
+    <h2>What PaperPort does not do</h2>
+    <ul>
+      <li>No analytics, advertising IDs, or usage tracking of any kind</li>
+      <li>No account or database on any server — everything lives on your computer</li>
+      <li>No selling or sharing of any data, because none is collected to share</li>
+    </ul>
 
-  <h2>Changes to this policy</h2>
-  <p>If this policy changes, the "Last updated" date above will change with it. Continuing
-  to use PaperPort after an update means you accept the current version.</p>
+    <h2>Where your data lives</h2>
+    <p>Entirely on your own computer: your downloaded papers in the folder you choose (see
+    Settings), and your Google session in PaperPort's local settings folder. Nothing is
+    uploaded by PaperPort at any point.</p>
 
-  <p class="contact">Questions about this policy? Contact
-    <a href="mailto:adminpaperport@gmail.com">adminpaperport@gmail.com</a>.</p>
-</div>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the "Last updated" date above will change with it. Continuing
+    to use PaperPort after an update means you accept the current version.</p>
+
+    <p class="legal-contact">Questions about this policy? Contact
+      <a href="mailto:adminpaperport@gmail.com">adminpaperport@gmail.com</a>.</p>
+  </article>
+</main>
 </body>
 </html>
