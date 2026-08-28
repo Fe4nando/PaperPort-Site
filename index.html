@@ -8,158 +8,289 @@
 <link rel="icon" href="icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#4a3fd6; --primary-dark:#372fa8; --ink:#171826; --muted:#66677e;
+    --bg:#fbfaf8; --surface:#ffffff; --line:#e5e3dd; --line-soft:#eeece7;
+    --accent-paper:#fff9ec; --accent-paper-line:#e9dfc2;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,.serif{font-family:'Fraunces',Georgia,serif}
+  a{color:var(--primary)}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px}
+
+  /* ---------- header ---------- */
+  header.top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 0; border-bottom:1px solid var(--line-soft);
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink)}
+  .brand img{width:30px; height:30px; border-radius:8px}
+  .brand strong{font-size:1.05rem; letter-spacing:-.01em}
+  nav.top-links{display:flex; align-items:center; gap:28px; font-size:.9rem}
+  nav.top-links a{color:var(--muted); text-decoration:none}
+  nav.top-links a:hover{color:var(--ink)}
+  .nav-cta{
+    color:var(--ink) !important; border:1px solid var(--line); border-radius:9px;
+    padding:8px 16px; font-weight:600;
+  }
+  .nav-cta:hover{border-color:var(--primary); color:var(--primary) !important}
+
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
+    padding:76px 0 88px;
+  }
+  .kicker{
+    display:inline-flex; align-items:center; gap:7px; font-size:.78rem; font-weight:600;
+    letter-spacing:.03em; text-transform:uppercase; color:var(--primary);
+    background:#f1efff; border:1px solid #e2ddfb; padding:5px 12px 5px 10px; border-radius:99px;
+    margin-bottom:22px;
+  }
+  .kicker span{width:6px; height:6px; border-radius:50%; background:var(--primary); display:inline-block}
+  .hero h1{
+    font-size:3rem; font-weight:600; line-height:1.06; letter-spacing:-.015em; margin:0 0 20px;
+  }
+  .hero h1 em{font-style:italic; color:var(--primary)}
+  .hero p{font-size:1.08rem; color:var(--muted); max-width:440px; margin:0 0 30px}
+  .hero-actions{display:flex; align-items:center; gap:18px; flex-wrap:wrap}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:11px;
+    font-weight:600; font-size:.95rem; text-decoration:none; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--ink); color:#fff}
+  .btn-primary:hover{background:#000}
+  .btn svg{flex:none}
+  .fine{color:var(--muted); font-size:.82rem; margin:22px 0 0}
+  .fine .dot{color:var(--line)}
+
+  /* ---------- mockup ---------- */
+  .mock{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    box-shadow:0 1px 2px rgba(23,24,38,.04), 0 24px 48px -20px rgba(23,24,38,.18);
+    overflow:hidden;
+  }
+  .mock-bar{
+    display:flex; align-items:center; gap:6px; padding:11px 14px; border-bottom:1px solid var(--line-soft);
+  }
+  .mock-bar i{width:9px; height:9px; border-radius:50%; background:var(--line)}
+  .mock-body{display:grid; grid-template-columns:108px 1fr; min-height:290px; font-size:.68rem}
+  .mock-side{background:#fbfaf8; border-right:1px solid var(--line-soft); padding:14px 10px}
+  .mock-brand{display:flex; align-items:center; gap:6px; margin-bottom:16px; font-weight:700; font-size:.72rem}
+  .mock-brand i{width:14px; height:14px; border-radius:4px; background:var(--primary)}
+  .mock-nav-item{
+    padding:7px 8px; border-radius:7px; margin-bottom:5px; color:var(--muted); font-weight:500;
+  }
+  .mock-nav-item.on{background:#efecff; color:var(--primary)}
+  .mock-main{padding:16px}
+  .mock-steps{display:flex; align-items:center; gap:6px; margin-bottom:16px}
+  .mock-step{
+    width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:.62rem; background:#efecff; color:var(--primary);
+  }
+  .mock-step.done{background:var(--primary); color:#fff}
+  .mock-step-line{flex:1; height:1px; background:var(--line)}
+  .mock-h{font-weight:700; font-size:.82rem; margin-bottom:3px}
+  .mock-sub{color:var(--muted); margin-bottom:14px}
+  .mock-chips{display:flex; flex-wrap:wrap; gap:6px}
+  .mock-chip{
+    border:1px solid var(--line); border-radius:8px; padding:8px 10px; width:calc(50% - 3px);
+  }
+  .mock-chip.sel{border-color:var(--primary); background:#f7f6ff}
+  .mock-chip b{display:block; font-size:.68rem}
+  .mock-chip span{color:var(--muted); font-size:.6rem}
+
+  /* ---------- how it works ---------- */
+  .section{padding:20px 0 84px}
+  .section-head{max-width:520px; margin:0 0 44px}
+  .section-head .kicker{margin-bottom:14px}
+  .section-head h2{font-size:1.9rem; font-weight:600; margin:0 0 10px; letter-spacing:-.01em}
+  .section-head p{color:var(--muted); margin:0; font-size:1rem}
+
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line)}
+  .step{padding:26px 26px 26px 0; border-right:1px solid var(--line)}
+  .step:last-child{border-right:none}
+  .step-num{font-family:'Fraunces',serif; font-size:1.6rem; color:var(--line); font-weight:600; margin:22px 0 12px}
+  .step h3{margin:0 0 8px; font-size:1.02rem}
+  .step p{margin:0; color:var(--muted); font-size:.92rem}
+
+  /* ---------- feature list ---------- */
+  .list{border-top:1px solid var(--line)}
+  .row{
+    display:grid; grid-template-columns:220px 1fr; gap:32px; padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .row h3{margin:0; font-size:1.02rem}
+  .row p{margin:6px 0 0; color:var(--muted); font-size:.94rem; max-width:520px}
+
+  /* ---------- final cta ---------- */
+  .cta{
+    background:var(--ink); border-radius:20px; padding:52px 48px; margin:8px 0 72px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .cta h2{color:#fff; font-size:1.7rem; margin:0 0 8px; font-weight:600}
+  .cta p{color:#a7a8bd; margin:0; font-size:.96rem}
+  .cta .btn-primary{background:#fff; color:var(--ink)}
+  .cta .btn-primary:hover{background:#f1f1f5}
+
+  footer{border-top:1px solid var(--line-soft); padding:26px 0 48px; color:var(--muted); font-size:.85rem}
+  footer .row2{display:flex; flex-wrap:wrap; gap:8px 22px; align-items:center; justify-content:space-between}
+  footer a{color:var(--muted); text-decoration:none}
+  footer a:hover{color:var(--primary)}
+
+  @media(max-width:820px){
+    .hero{grid-template-columns:1fr; padding:44px 0 56px}
+    .hero h1{font-size:2.3rem}
+    .steps{grid-template-columns:1fr}
+    .step{border-right:none; border-bottom:1px solid var(--line); padding:22px 0}
+    .row{grid-template-columns:1fr; gap:8px}
+    nav.top-links{gap:16px}
+    .cta{padding:36px 26px; text-align:center; justify-content:center}
+  }
+</style>
 </head>
 <body>
-<!--
-  Refinement of the editorial PaperPort site, not a redesign.
-  KEPT: Fraunces italic display + Inter, warm #fbfaf8 paper ground, ink-black
-  actions, hairline-ruled sections, single dark closing band, all copy.
-  TIGHTENED: removed the eyebrow/kicker pills above every heading; the step
-  numbers now read as instructions (ink rule, Fraunces italic) instead of grey
-  watermarks; the product figure shows the actual selection -> two-file payoff
-  rather than four subject chips; unified type scale and vertical rhythm;
-  themed selection, focus and scrollbar. No dark mode, no gradient buttons,
-  no window chrome, no scroll animation.
--->
 <div class="wrap">
-
-  <header class="site-head">
+  <header class="top">
     <a class="brand" href="index.html"><img src="icon.png" alt=""><strong>PaperPort</strong></a>
-    <nav class="nav">
-      <a class="plain" href="#how">How it works</a>
-      <a class="plain" href="#features">Features</a>
-      <a class="nav-dl" href="https://github.com/Fe4nando/PaperPort-Site/releases/latest/download/PaperPortSetup.exe">Download</a>
+    <nav class="top-links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a class="nav-cta" href="https://github.com/Fe4nando/PaperPort-Site/releases/latest/download/PaperPortSetup.exe">Download</a>
     </nav>
   </header>
 
   <section class="hero">
     <div>
+      <div class="kicker"><span></span> Windows · Free</div>
       <h1>Past papers,<br>without the <em>hunting</em>.</h1>
-      <p class="hero-lede">PaperPort finds, brands, and combines Cambridge IGCSE and A-Level past
-      papers into one clean PDF per paper type — so you spend your time studying, not
+      <p>PaperPort finds, brands, and combines Cambridge IGCSE and A-Level past papers
+      into one clean PDF per paper type — so you spend your time studying, not
       searching seven different sites.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://github.com/Fe4nando/PaperPort-Site/releases/latest/download/PaperPortSetup.exe">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v13m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3v13m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           Download for Windows
         </a>
-        <a class="hero-jump" href="#how">See how it works</a>
       </div>
-      <p class="hero-fine">Windows 10 and later<span class="sep">·</span>Free<span class="sep">·</span>Google sign-in to use</p>
+      <p class="fine">Windows 10+ <span class="dot">·</span> Google sign-in to use <span class="dot">·</span> No card required</p>
     </div>
 
-    <figure class="figure">
-      <div class="fig-app">
-        <div class="fig-rail">
-          <b>PaperPort</b>
-          <span class="on">Download</span>
-          <span>My files</span>
-          <span>Settings</span>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i></div>
+      <div class="mock-body">
+        <div class="mock-side">
+          <div class="mock-brand"><i></i>PaperPort</div>
+          <div class="mock-nav-item on">Download Papers</div>
+          <div class="mock-nav-item">My Downloads</div>
+          <div class="mock-nav-item">Settings</div>
         </div>
-        <div class="fig-main">
-          <div class="fig-steps">
-            <i class="done">1</i><u></u><i class="done">2</i><u></u><i class="now">3</i><u></u><i>4</i>
+        <div class="mock-main">
+          <div class="mock-steps">
+            <div class="mock-step done">1</div><div class="mock-step-line"></div>
+            <div class="mock-step">2</div><div class="mock-step-line"></div>
+            <div class="mock-step">3</div><div class="mock-step-line"></div>
+            <div class="mock-step">4</div>
           </div>
-          <p class="fig-label">Your selection</p>
-          <p class="fig-sel">Mathematics 9709 · A-Level</p>
-          <p class="fig-sub">Paper 2 · variants 1–3 · sessions 2019–2023</p>
-          <p class="fig-arrow">PaperPort combines</p>
-          <div class="fig-file">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M13 3v5h5" stroke="currentColor" stroke-width="1.6"/></svg>
-            <span><b>9709_QP_21.pdf</b>Every question paper, one file</span>
-          </div>
-          <div class="fig-file">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M13 3v5h5" stroke="currentColor" stroke-width="1.6"/></svg>
-            <span><b>9709_MS_21.pdf</b>Every mark scheme, one file</span>
+          <div class="mock-h">Select subject</div>
+          <div class="mock-sub">A-Level · Cambridge International</div>
+          <div class="mock-chips">
+            <div class="mock-chip sel"><b>Mathematics</b><span>9709</span></div>
+            <div class="mock-chip"><b>Physics</b><span>9702</span></div>
+            <div class="mock-chip"><b>Chemistry</b><span>9701</span></div>
+            <div class="mock-chip sel"><b>Biology</b><span>9700</span></div>
           </div>
         </div>
       </div>
-    </figure>
+    </div>
   </section>
 
   <section class="section" id="how">
     <div class="section-head">
+      <div class="kicker"><span></span> How it works</div>
       <h2>Three steps, one PDF.</h2>
-      <p>No account setup, no digging through mirror sites, no manually stitching files
-      together in another program.</p>
+      <p>No account setup, no digging through mirror sites, no manually stitching
+      files together in another program.</p>
     </div>
     <div class="steps">
       <div class="step">
-        <div class="step-n">01</div>
+        <div class="step-num">01</div>
         <h3>Pick what you need</h3>
-        <p>Level, subject, years, sessions, paper numbers and types — a guided picker walks
-        you through it.</p>
+        <p>Level, subject, years, sessions, paper numbers and types — a guided picker
+        walks you through it.</p>
       </div>
       <div class="step">
-        <div class="step-n">02</div>
+        <div class="step-num">02</div>
         <h3>PaperPort does the rest</h3>
-        <p>It checks several mirrors for each paper, verifies the file is real, and stamps
-        on a cover page automatically.</p>
+        <p>It checks several mirrors for each paper, verifies the file is real, and
+        stamps on a cover page automatically.</p>
       </div>
       <div class="step">
-        <div class="step-n">03</div>
+        <div class="step-num">03</div>
         <h3>Open one clean PDF</h3>
-        <p>Every Question Paper you picked becomes one file, every Mark Scheme another —
-        ready to print.</p>
+        <p>Every Question Paper you picked becomes one file, every Mark Scheme
+        another — ready to print.</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="features">
     <div class="section-head">
+      <div class="kicker"><span></span> Features</div>
       <h2>Built to just work.</h2>
     </div>
     <div class="list">
       <div class="row">
         <h3>Every subject, every year</h3>
-        <p>IGCSE and A-Level, going back as far as the mirrors keep records — a simple
+        <p>IGCSE and A-Level, going back as far as mirrors keep records — a simple
         level → subject → year → paper picker, no memorising syllabus codes.</p>
       </div>
       <div class="row">
         <h3>Your files, your folder</h3>
-        <p>Choose exactly where downloads land from Settings — nothing goes to a cloud
-        account you don't control.</p>
+        <p>Choose exactly where downloads land from Settings — nothing goes to a
+        cloud account you don't control.</p>
       </div>
       <div class="row">
         <h3>Sign in with Google</h3>
-        <p>Used for one thing only: showing your real name in the sidebar. No ads, no
-        analytics, no data collected beyond that.</p>
+        <p>Used for one thing only: showing your real name in the sidebar. No ads,
+        no analytics, no data collected beyond that.</p>
       </div>
       <div class="row">
         <h3>Designed for non-technical users</h3>
-        <p>Built for teachers and students first — a plain, guided interface, not a tool
-        that assumes you're IT staff.</p>
+        <p>Built for teachers and students first — a plain, guided interface, not a
+        tool that assumes you're IT staff.</p>
       </div>
     </div>
   </section>
 
-  <section class="close">
+  <section class="cta">
     <div>
       <h2>Get PaperPort</h2>
       <p>Free installer for Windows 10 and later.</p>
     </div>
     <a class="btn btn-primary" href="https://github.com/Fe4nando/PaperPort-Site/releases/latest/download/PaperPortSetup.exe">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v13m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3v13m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       Download for Windows
     </a>
   </section>
 
+  <footer>
+    <div class="row2">
+      <span>© 2026 PaperPort</span>
+      <span>
+        <a href="privacy.html">Privacy Policy</a> ·
+        <a href="terms.html">Terms of Service</a> ·
+        <a href="mailto:adminpaperport@gmail.com">Contact</a>
+      </span>
+    </div>
+  </footer>
 </div>
-
-<footer class="site-foot">
-  <div class="wrap">
-    <span>© 2026 PaperPort</span>
-    <nav>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="mailto:adminpaperport@gmail.com">Contact</a>
-    </nav>
-    <p class="rights">Past papers and mark schemes remain the copyright of Cambridge Assessment
-    International Education. PaperPort retrieves them from third-party mirrors at your request
-    and adds only a cover page.</p>
-  </div>
-</footer>
 </body>
 </html>
