@@ -12,8 +12,7 @@
 <style>
   :root{
     --primary:#4a3fd6; --primary-dark:#372fa8; --ink:#171826; --muted:#66677e;
-    --bg:#fbfaf8; --surface:#ffffff; --line:#e5e3dd; --line-soft:#eeece7;
-    --accent-paper:#fff9ec; --accent-paper-line:#e9dfc2;
+    --bg:#ffffff; --surface:#ffffff; --line:#e6e6ea; --line-soft:#f1f1f4;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -82,7 +81,7 @@
   }
   .mock-bar i{width:9px; height:9px; border-radius:50%; background:var(--line)}
   .mock-body{display:grid; grid-template-columns:108px 1fr; min-height:290px; font-size:.68rem}
-  .mock-side{background:#fbfaf8; border-right:1px solid var(--line-soft); padding:14px 10px}
+  .mock-side{background:#f7f7f9; border-right:1px solid var(--line-soft); padding:14px 10px}
   .mock-brand{display:flex; align-items:center; gap:6px; margin-bottom:16px; font-weight:700; font-size:.72rem}
   .mock-brand i{width:14px; height:14px; border-radius:4px; background:var(--primary)}
   .mock-nav-item{
@@ -130,6 +129,52 @@
   .row h3{margin:0; font-size:1.02rem}
   .row p{margin:6px 0 0; color:var(--muted); font-size:.94rem; max-width:520px}
 
+  /* ---------- version history ---------- */
+  .releases{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+  .release{border-bottom:1px solid var(--line)}
+  .release-summary{
+    cursor:pointer; list-style:none; display:flex; align-items:center; gap:14px;
+    padding:22px 0;
+  }
+  .release-summary::-webkit-details-marker{display:none}
+  .release-summary:hover .release-tag{color:var(--primary)}
+  .release-tag{font-family:'Fraunces',serif; font-size:1.15rem; font-weight:600; letter-spacing:-.01em}
+  .release-date{color:var(--muted); font-size:.85rem}
+  .release-badge{
+    font-size:.66rem; font-weight:600; letter-spacing:.03em;
+    text-transform:uppercase; color:var(--primary); background:#f1efff;
+    border:1px solid #e2ddfb; border-radius:99px; padding:2px 9px;
+  }
+  .release-badge.pre{color:#8a5a00; background:#fff4e0; border-color:#f0dcb0}
+  .release-chevron{
+    margin-left:auto; flex:none; color:var(--muted); display:inline-flex;
+    transition:transform .15s ease;
+  }
+  .release[open] .release-chevron{transform:rotate(90deg)}
+  .release-detail{padding:0 0 26px; max-width:640px}
+  .release-detail h3{margin:0 0 4px; font-size:1.02rem}
+  .release-notes{padding:2px 0}
+  .release-notes h4{margin:14px 0 6px; font-size:.9rem; font-weight:700}
+  .release-notes h4:first-child{margin-top:0}
+  .release-notes p{margin:6px 0; color:var(--muted); font-size:.92rem; max-width:560px}
+  .release-notes ul{margin:6px 0; padding-left:18px}
+  .release-notes li{color:var(--muted); font-size:.92rem; margin:3px 0}
+  .release-notes code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.85em;
+    background:#f4f4f6; border:1px solid var(--line-soft); border-radius:5px; padding:1px 5px;
+  }
+  .release-notes a{color:var(--primary); text-decoration:none}
+  .release-notes a:hover{text-decoration:underline}
+  .release-dl{
+    display:inline-flex; align-items:center; gap:8px; margin-top:16px;
+    font-size:.9rem; font-weight:600; color:var(--ink); text-decoration:none;
+    border:1px solid var(--line); border-radius:9px; padding:8px 14px;
+  }
+  .release-dl:hover{border-color:var(--primary); color:var(--primary)}
+  .release-dl span{color:var(--muted); font-weight:400}
+  .release-dl:hover span{color:var(--primary)}
+  .releases-note{color:var(--muted); font-size:.86rem; padding:18px 0 0; margin:0}
+
   /* ---------- final cta ---------- */
   .cta{
     background:var(--ink); border-radius:20px; padding:52px 48px; margin:8px 0 72px;
@@ -153,6 +198,8 @@
     .row{grid-template-columns:1fr; gap:8px}
     nav.top-links{gap:16px}
     .cta{padding:36px 26px; text-align:center; justify-content:center}
+    .release-summary{flex-wrap:wrap; gap:8px 12px}
+    .release-chevron{order:-1; margin-left:0}
   }
 </style>
 </head>
@@ -163,6 +210,7 @@
     <nav class="top-links">
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
+      <a href="#versions">Version history</a>
       <a class="nav-cta" href="https://github.com/Fe4nando/PaperPort-Site/releases/latest/download/PaperPortSetup.exe">Download</a>
     </nav>
   </header>
@@ -270,6 +318,38 @@
     </div>
   </section>
 
+  <section class="section" id="versions">
+    <div class="section-head">
+      <div class="kicker"><span></span> Version history</div>
+      <h2>What's changed.</h2>
+      <p>PaperPort updates in place. Open a release for its notes and installer.</p>
+    </div>
+    <ol class="releases" id="releaseList">
+      <li>
+        <details class="release" open>
+          <summary class="release-summary">
+            <span class="release-tag">v1.0.0</span>
+            <span class="release-date">August 2026</span>
+            <span class="release-badge">Latest</span>
+            <span class="release-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="release-detail">
+            <h3>First public release</h3>
+            <div class="release-notes">
+              <p>Initial Windows build: guided level → subject → year → paper picker,
+              multi-mirror fetching with file verification, an automatic cover page,
+              and one combined PDF per paper type.</p>
+            </div>
+            <a class="release-dl" href="https://github.com/Fe4nando/PaperPort-Site/releases">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v13m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              All releases and downloads on GitHub
+            </a>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </section>
+
   <section class="cta">
     <div>
       <h2>Get PaperPort</h2>
@@ -292,5 +372,133 @@
     </div>
   </footer>
 </div>
+<script>
+(function(){
+  var LIST = document.getElementById('releaseList');
+  if(!LIST) return;
+  var REPO = 'Fe4nando/PaperPort-Site';
+  var API = 'https://api.github.com/repos/' + REPO + '/releases?per_page=30';
+  var RELEASES_URL = 'https://github.com/' + REPO + '/releases';
+  var CACHE_KEY = 'pp_releases_v1';
+
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function inline(s){
+    return esc(s)
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function(m, t, u){
+        var safe = /^https?:\/\//i.test(u) ? u : '#';
+        return '<a href="' + esc(safe) + '" target="_blank" rel="noopener">' + t + '</a>';
+      });
+  }
+  // Minimal Markdown: headings, bullet lists, bold, inline code, links, paragraphs.
+  function mdLite(src){
+    var lines = String(src || '').replace(/\r\n/g, '\n').split('\n');
+    var out = '', inUl = false;
+    function closeUl(){ if(inUl){ out += '</ul>'; inUl = false; } }
+    lines.forEach(function(raw){
+      var t = raw.trim();
+      if(!t){ closeUl(); return; }
+      var h = t.match(/^#{1,6}\s+(.*)$/);
+      if(h){ closeUl(); out += '<h4>' + inline(h[1]) + '</h4>'; return; }
+      var li = t.match(/^[-*]\s+(.*)$/);
+      if(li){ if(!inUl){ out += '<ul>'; inUl = true; } out += '<li>' + inline(li[1]) + '</li>'; return; }
+      closeUl();
+      out += '<p>' + inline(t) + '</p>';
+    });
+    closeUl();
+    return out;
+  }
+  function fmtDate(iso){
+    var d = new Date(iso);
+    if(isNaN(d)) return '';
+    return d.toLocaleDateString(undefined, { day:'numeric', month:'short', year:'numeric' });
+  }
+  function fmtSize(bytes){
+    if(!bytes) return '';
+    return Math.round(bytes / 1048576) + ' MB';
+  }
+  function versionLabel(tag){
+    return 'v' + String(tag || '').replace(/^v/i, '');
+  }
+  function pickAsset(assets){
+    assets = assets || [];
+    for(var i = 0; i < assets.length; i++){
+      if(/\.exe$/i.test(assets[i].name)) return assets[i];
+    }
+    return assets[0] || null;
+  }
+
+  function render(releases){
+    var items = (releases || []).filter(function(r){ return !r.draft; });
+    if(!items.length) return false;
+
+    var CHEVRON = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var DL_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v13m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+
+    var frag = document.createDocumentFragment();
+    items.forEach(function(r, i){
+      var li = document.createElement('li');
+
+      var asset = pickAsset(r.assets);
+      var dlHref = asset ? asset.browser_download_url : r.html_url;
+      var dlName = asset ? asset.name : 'View on GitHub';
+      var dlSize = asset ? fmtSize(asset.size) : '';
+
+      var badge = i === 0
+        ? '<span class="release-badge">Latest</span>'
+        : (r.prerelease ? '<span class="release-badge pre">Pre-release</span>' : '');
+
+      var notes = r.body && r.body.trim()
+        ? '<div class="release-notes">' + mdLite(r.body) + '</div>'
+        : '';
+
+      // The whole entry is a <details>: summary shows version/date/badge,
+      // expanding reveals the notes and the version-specific installer link.
+      li.innerHTML =
+        '<details class="release"' + (i === 0 ? ' open' : '') + '>'
+          + '<summary class="release-summary">'
+            + '<span class="release-tag">' + esc(versionLabel(r.tag_name)) + '</span>'
+            + '<span class="release-date">' + esc(fmtDate(r.published_at || r.created_at)) + '</span>'
+            + badge
+            + '<span class="release-chevron" aria-hidden="true">' + CHEVRON + '</span>'
+          + '</summary>'
+          + '<div class="release-detail">'
+            + (r.name ? '<h3>' + esc(r.name) + '</h3>' : '')
+            + notes
+            + '<a class="release-dl" href="' + esc(dlHref) + '">'
+              + DL_ICON + esc(dlName) + (dlSize ? ' <span>(' + esc(dlSize) + ')</span>' : '')
+            + '</a>'
+          + '</div>'
+        + '</details>';
+      frag.appendChild(li);
+    });
+
+    LIST.innerHTML = '';
+    LIST.appendChild(frag);
+
+    var note = document.createElement('p');
+    note.className = 'releases-note';
+    note.innerHTML = 'Pulled live from <a href="' + RELEASES_URL + '">GitHub Releases</a>.';
+    LIST.parentNode.appendChild(note);
+    return true;
+  }
+
+  try{
+    var cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
+    if(cached && Date.now() - cached.t < 600000 && render(cached.d)) return;
+  }catch(e){}
+
+  fetch(API, { headers: { 'Accept': 'application/vnd.github+json' } })
+    .then(function(res){ if(!res.ok) throw new Error(res.status); return res.json(); })
+    .then(function(data){
+      try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), d: data })); }catch(e){}
+      render(data);
+    })
+    .catch(function(){ /* keep the static fallback entry already in the list */ });
+})();
+</script>
 </body>
 </html>
